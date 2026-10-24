@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy 21st Birthday, Khizha</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1424;--bg2:#151d33;--ink:#f3efe6;--mute:#b4b9c8;--gold:#e2b765;--gold2:#f4d89a;--card:#1a2340;--line:#2b3658;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#fbf6ec;--bg2:#f3ead8;--ink:#2a2233;--mute:#6b6577;--gold:#b8862b;--gold2:#8a5f12;--card:#fffdf8;--line:#e6d9bd}}
+:root[data-theme="dark"]{--bg:#0e1424}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0;line-height:1.15}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav b{font-family:'Playfair Display',Georgia,serif;color:var(--gold);font-size:1.15rem}
+nav div{display:flex;gap:22px;font-size:.9rem;color:var(--mute)}
+nav a:hover{color:var(--gold)}
+@media(max-width:620px){nav div{gap:12px;font-size:.8rem}}
+section{padding:90px 5vw;max-width:1100px;margin:auto}
+.eyebrow{letter-spacing:.25em;text-transform:uppercase;font-size:.75rem;color:var(--gold);font-weight:600}
+h2{font-size:clamp(2rem,5vw,3rem);margin:10px 0 36px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;min-height:86vh}
+.hero h1{font-size:clamp(2.8rem,8vw,5.6rem)}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{color:var(--mute);max-width:480px;margin:22px 0 30px}
+.btn{display:inline-block;border:0;cursor:pointer;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1405;padding:14px 28px;border-radius:99px;font:600 .95rem Inter,sans-serif;box-shadow:0 8px 24px rgba(226,183,101,.25);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line);box-shadow:none;margin-left:10px}
+.portrait{position:relative}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:200px 200px 24px 24px;border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.portrait::after{content:"21";position:absolute;right:-8px;bottom:-22px;font:700 4.5rem 'Playfair Display',serif;color:var(--gold);background:var(--bg);border:1px solid var(--line);border-radius:50%;width:112px;height:112px;display:grid;place-items:center}
+@media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center;padding-top:40px}.hero p{margin-inline:auto}.portrait{max-width:340px;margin:20px auto 0}}
+.letter{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
+.letter img{width:100%;border-radius:20px;border:1px solid var(--line);aspect-ratio:3/4;object-fit:cover}
+.letter p{color:var(--mute);margin:0 0 16px}
+.sign{font:italic 500 1.5rem 'Playfair Display',serif;color:var(--gold)}
+@media(max-width:800px){.letter{grid-template-columns:1fr}}
+.cake-wrap{text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:60px 20px;max-width:none}
+.cake-wrap svg{width:min(300px,80%);height:auto}
+.flame{transform-origin:50% 100%;animation:fl 1.1s ease-in-out infinite alternate;transition:opacity .4s}
+.out .flame{opacity:0}
+@keyframes fl{to{transform:scale(1.12,.92) rotate(2deg)}}
+#wishMsg{min-height:2em;font:italic 500 1.4rem 'Playfair Display',serif;color:var(--gold);margin:6px 0 22px}
+.reasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;padding:0;margin:0;list-style:none;counter-reset:r}
+.reasons li{counter-increment:r;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 18px 64px;position:relative;color:var(--mute);font-size:.95rem}
+.reasons li::before{content:counter(r);position:absolute;left:16px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:1px solid var(--gold);color:var(--gold);font:600 .85rem Inter}
+.gallery{columns:3 240px;column-gap:14px}
+.gallery img{width:100%;display:block;margin-bottom:14px;border-radius:14px;cursor:zoom-in;border:1px solid var(--line);transition:transform .3s,filter .3s}
+.gallery img:hover{transform:scale(1.015);filter:brightness(1.08)}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(5,8,16,.94);display:none;align-items:center;justify-content:center;padding:20px}
+#lb.on{display:flex}
+#lb img{max-width:92vw;max-height:84vh;border-radius:12px}
+#lb button{position:absolute;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;padding:14px}
+#lbx{top:calc(8px + env(safe-area-inset-top,0px));right:12px}#lbp{left:8px;top:50%}#lbn{right:8px;top:50%}
+#lbc{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));color:#b4b9c8;font-size:.85rem}
+.gb{display:grid;grid-template-columns:1fr 1.2fr;gap:30px}
+@media(max-width:800px){.gb{grid-template-columns:1fr}}
+form{display:grid;gap:12px;align-content:start}
+input,textarea{width:100%;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--gold);border-color:transparent}
+textarea{min-height:120px;resize:vertical}
+#notes{display:grid;gap:12px;align-content:start;max-height:460px;overflow:auto}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:14px 16px}
+.note b{color:var(--gold);font-family:'Playfair Display',serif}
+.note p{margin:4px 0 0;color:var(--mute);white-space:pre-wrap;word-break:break-word}
+.empty{color:var(--mute);font-style:italic}
+footer{text-align:center;padding:50px 5vw 60px;color:var(--mute);border-top:1px solid var(--line);font-size:.9rem}
+footer b{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem;display:block;margin-bottom:6px}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:40}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.flame{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="cf"></canvas>
+<nav><b id="brand">K · 21</b><div><a href="#letter">Letter</a><a href="#wish">Wish</a><a href="#reasons">21 Reasons</a><a href="#gallery">Memories</a><a href="#guestbook">Wishes</a></div></nav>
+
+<section class="hero" id="top">
+<div>
+<div class="eyebrow">Celebrating a milestone</div>
+<h1>Happy 21st,<br><em id="nm">Khizha</em></h1>
+<p>Twenty-one years of you, and the world is better for every one of them. This little corner of the internet is all yours today.</p>
+<a class="btn" href="#wish">Make a wish</a><a class="btn ghost" href="#gallery">See memories</a>
+</div>
+<div class="portrait"><img id="heroImg" alt="Birthday celebrant smiling in a photo together"></div>
+</section>
+
+<section id="letter" class="rv"><div class="letter">
+<img id="letterImg" alt="A night out together">
+<div>
+<div class="eyebrow">A note for you</div>
+<h2>Twenty-one looks good on you</h2>
+<p>Happy birthday! Today is all about you, and honestly, you deserve every bit of it. Thank you for the laughs, the patience, and the way you make ordinary days feel special.</p>
+<p>I hope this year brings you everything you’ve been quietly wishing for: good health, big wins, peaceful mornings, and people who love you loudly. Whatever comes next, I’m cheering for you.</p>
+<p>Here’s to 21, and to every beautiful year after it.</p>
+<div class="sign" id="from">— CJ</div>
+</div></div></section>
+
+<section id="wish" class="rv"><div class="cake-wrap" id="cakeBox">
+<div class="eyebrow">Make a wish</div>
+<h2>Blow out the candles</h2>
+<svg viewBox="0 0 300 260" role="img" aria-label="Birthday cake with candles">
+<ellipse cx="150" cy="238" rx="130" ry="14" fill="#000" opacity=".25"/>
+<rect x="40" y="150" width="220" height="82" rx="14" fill="#e8a0b4"/>
+<rect x="40" y="150" width="220" height="28" rx="14" fill="#fff5f7"/>
+<path d="M40 170q18 22 36 0t36 0 36 0 36 0 36 0 40 0" fill="#fff5f7"/>
+<rect x="64" y="104" width="172" height="52" rx="12" fill="#f4c3d0"/>
+<path d="M64 124q14 16 28 0t28 0 28 0 28 0 28 0 32 0" fill="#fff"/>
+<g fill="#e2b765"><rect x="102" y="64" width="12" height="44" rx="3"/><rect x="144" y="56" width="12" height="52" rx="3"/><rect x="186" y="64" width="12" height="44" rx="3"/></g>
+<g class="flame" fill="#ffb347"><path d="M108 36c9 10 9 18 0 24-9-6-9-14 0-24z"/><path d="M150 28c9 10 9 18 0 24-9-6-9-14 0-24z"/><path d="M192 36c9 10 9 18 0 24-9-6-9-14 0-24z"/></g>
+</svg>
+<div id="wishMsg" aria-live="polite"></div>
+<button class="btn" id="blow">Blow the candles 🎂</button>
+</div></section>
+
+<section id="reasons" class="rv">
+<div class="eyebrow">For every year</div><h2>21 reasons you’re loved</h2>
+<ol class="reasons" id="rs"></ol></section>
+
+<section id="gallery" class="rv">
+<div class="eyebrow">Our moments</div><h2>Memories</h2>
+<div class="gallery" id="gal"></div></section>
+
+<section id="guestbook" class="rv">
+<div class="eyebrow">Guestbook</div><h2>Birthday wishes</h2>
+<div class="gb">
+<form id="f"><input id="who" placeholder="Your name" maxlength="40" required><textarea id="msg" placeholder="Write a birthday wish…" maxlength="400" required></textarea><button class="btn" type="submit">Send wish</button><small class="empty">Wishes are saved on this device only.</small></form>
+<div id="notes"></div>
+</div></section>
+
+<footer><b>Happy Birthday!</b>Made with love, for a very special 21st. 🎉</footer>
+
+<div id="lb"><button id="lbx" aria-label="Close">×</button><button id="lbp" aria-label="Previous">‹</button><img id="lbi" alt=""><button id="lbn" aria-label="Next">›</button><div id="lbc"></div></div>
+
+<script>
+const CONFIG={name:"Khizha",from:"CJ"};
+const PHOTOS=["images/photo1.jpg","images/photo2.jpg","images/photo3.jpg","images/photo4.jpg","images/photo5.jpg","images/photo6.jpg","images/photo7.jpg","images/photo8.jpg","images/photo9.jpg","images/photo10.jpg","images/photo11.jpg","images/photo12.jpg"];
+const REASONS=["Your smile lights up any room.","You’re kind without needing an audience.","Your laugh is contagious.","You make simple days feel special.","You listen, and you actually hear.","You’re stronger than you give yourself credit for.","You bring warmth wherever you go.","You care about the little things.","You’re always up for an adventure.","You make hard days easier.","You’re honest, even when it’s tough.","Your pouty selfies are undefeated.","You’re patient with the people you love.","You make great memories out of anything.","You work hard and rarely brag.","You’re thoughtful in quiet ways.","You’re fun to be around.","You believe in people.","You make home feel like a person.","You grow more amazing every year.","You’re simply, wonderfully you."];
+document.getElementById('nm').textContent=CONFIG.name;
+document.getElementById('from').textContent="— "+CONFIG.from;
+document.title="Happy 21st Birthday, "+CONFIG.name;
+document.getElementById('brand').textContent=CONFIG.name[0]+" · 21";
+document.getElementById('heroImg').src=PHOTOS[6];
+document.getElementById('letterImg').src=PHOTOS[10];
+document.getElementById('rs').innerHTML=REASONS.map(r=>'<li>'+r+'</li>').join('');
+const gal=document.getElementById('gal');
+PHOTOS.forEach((s,i)=>{const im=new Image();im.src=s;im.alt="Memory "+(i+1);im.loading="lazy";im.onclick=()=>openLb(i);gal.appendChild(im)});
+
+// Lightbox
+let cur=0;const lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc');
+function show(){lbi.src=PHOTOS[cur];lbc.textContent=(cur+1)+" / "+PHOTOS.length}
+function openLb(i){cur=i;show();lb.classList.add('on')}
+function closeLb(){lb.classList.remove('on')}
+function step(d){cur=(cur+d+PHOTOS.length)%PHOTOS.length;show()}
+lbx.onclick=closeLb;lbp.onclick=()=>step(-1);lbn.onclick=()=>step(1);
+lb.onclick=e=>{if(e.target===lb)closeLb()};
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX);lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)step(d>0?-1:1)});
+
+// Confetti
+const cv=document.getElementById('cf'),cx=cv.getContext('2d');let ps=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function burst(){const c=['#e2b765','#f4d89a','#e8a0b4','#8fb8ff','#fff'];for(let i=0;i<160;i++)ps.push({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,s:Math.random()*7+4,r:Math.random()*6,c:c[i%5],l:130+Math.random()*60});if(!run){run=true;tick()}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);ps=ps.filter(p=>p.l>0);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.vx*=.99;p.r+=.2;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});if(ps.length)requestAnimationFrame(tick);else{run=false;cx.clearRect(0,0,cv.width,cv.height)}}
+
+// Cake
+const box=document.getElementById('cakeBox'),btn=document.getElementById('blow'),wm=document.getElementById('wishMsg');let out=false;
+btn.onclick=()=>{out=!out;box.classList.toggle('out',out);if(out){wm.textContent="Happy birthday! May every wish come true ✨";btn.textContent="Relight candles";burst()}else{wm.textContent="";btn.textContent="Blow the candles 🎂"}};
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setTimeout(burst,900);
+
+// Guestbook (per-device)
+const KEY="bday21-wishes";let notes=[];
+try{notes=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){notes=[]}
+const nb=document.getElementById('notes');
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){nb.innerHTML=notes.length?notes.slice().reverse().map(n=>'<div class="note"><b>'+esc(n.n)+'</b><p>'+esc(n.m)+'</p></div>').join(''):'<p class="empty">Be the first to leave a birthday wish.</p>'}
+render();
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const n=who.value.trim(),m=msg.value.trim();if(!n||!m)return;notes.push({n,m});try{localStorage.setItem(KEY,JSON.stringify(notes))}catch(x){}render();e.target.reset();burst()};
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
