@@ -50,6 +50,46 @@ h2{font-size:clamp(2rem,5vw,3rem);margin:10px 0 36px}
 .gallery{columns:3 240px;column-gap:14px}
 .gallery img{width:100%;display:block;margin-bottom:14px;border-radius:14px;cursor:zoom-in;border:1px solid var(--line);transition:transform .3s,filter .3s}
 .gallery img:hover{transform:scale(1.015);filter:brightness(1.08)}
+.kz{background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:56px 7vw;text-align:center;position:relative}
+.kz::before{content:"“";position:absolute;top:6px;left:50%;transform:translateX(-50%);font:700 6rem/1 'Playfair Display',serif;color:var(--gold);opacity:.5}
+.kz p{max-width:640px;margin:0 auto 16px;color:var(--mute);font-size:1.05rem}
+section,footer{position:relative;z-index:1}
+body.lock{overflow:hidden}
+#intro{position:fixed;inset:0;z-index:60;background:radial-gradient(circle at 50% 40%,#1b2750,#080c18);display:grid;place-items:center;text-align:center;color:#f3efe6;padding:20px;transition:opacity .9s,visibility .9s}
+#intro.off{opacity:0;visibility:hidden}
+#intro .big{font:700 clamp(6rem,24vw,13rem)/1 'Playfair Display',Georgia,serif;background:linear-gradient(135deg,#f4d89a,#e2b765);-webkit-background-clip:text;background-clip:text;color:transparent;animation:pop 1.6s ease both}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+#intro p{color:#b4b9c8;margin:6px 0 26px}
+.bl{position:fixed;bottom:-140px;width:46px;height:58px;border-radius:50% 50% 48% 48%;opacity:.25;pointer-events:none;z-index:0;animation:rise linear infinite}
+.bl::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:50px;background:currentColor;opacity:.6}
+@keyframes rise{to{transform:translate(40px,-125vh) rotate(8deg)}}
+#cd{margin:0 0 26px;display:flex;gap:12px;flex-wrap:wrap}
+#cd[hidden]{display:none}
+#cd span{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 14px;text-align:center;min-width:64px;color:var(--mute);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
+#cd b{display:block;font:700 1.6rem 'Playfair Display',serif;color:var(--gold)}
+#cd em{font:italic 500 1.3rem 'Playfair Display',serif;color:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:center;padding-block:30px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 10px;color:var(--mute);font-size:.85rem;text-transform:uppercase;letter-spacing:.12em}
+.stats b{display:block;font:700 clamp(2rem,6vw,3.4rem) 'Playfair Display',serif;color:var(--gold);letter-spacing:0}
+.game{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:640px}
+@media(max-width:560px){.game{grid-template-columns:repeat(3,1fr)}}
+.card{perspective:800px;aspect-ratio:1;border:0;background:none;padding:0;cursor:pointer;position:relative}
+.f{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .5s;display:grid;place-items:center;overflow:hidden}
+.f.b{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1405;font:700 2rem 'Playfair Display',serif}
+.f.fr{transform:rotateY(180deg)}.f.fr img{width:100%;height:100%;object-fit:cover}
+.card.on .b{transform:rotateY(180deg)}.card.on .fr{transform:rotateY(360deg)}
+.gbar{display:flex;gap:18px;align-items:center;margin:18px 0 0;color:var(--mute)}
+#gwin{color:var(--gold);font-weight:600}
+.gift{text-align:center}
+#gbox{font-size:7rem;background:none;border:0;cursor:pointer;line-height:1;animation:wob 2.2s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(0)}10%{transform:rotate(-8deg)}20%{transform:rotate(8deg)}30%{transform:rotate(0)}}
+#gmsg{max-width:520px;margin:10px auto 0;background:var(--card);border:1px solid var(--gold);border-radius:18px;padding:22px;color:var(--mute);display:none}
+#gmsg.on{display:block;animation:pop .7s ease both}
+#mus{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--gold);font-size:1.3rem;cursor:pointer}
+#mus.on{background:var(--gold);color:#1b1405}
+#lbs{top:calc(8px + env(safe-area-inset-top,0px));left:12px;font-size:1.6rem!important}
+.portrait img{transition:transform .15s}
+@media(prefers-reduced-motion:reduce){.bl,#gbox,#intro .big{animation:none}}
 #lb{position:fixed;inset:0;z-index:50;background:rgba(5,8,16,.94);display:none;align-items:center;justify-content:center;padding:20px}
 #lb.on{display:flex}
 #lb img{max-width:92vw;max-height:84vh;border-radius:12px}
@@ -75,19 +115,25 @@ footer b{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.flame{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
-<body>
+<body class="lock">
+<div id="intro"><div><div class="big">21</div><h2 id="introName" style="font-size:2rem;margin:0"></h2><p>Someone made something special for you</p><button class="btn" id="open">Open your surprise 🎁</button></div></div>
+<div id="bl"></div>
+<button id="mus" aria-label="Play birthday tune" title="Birthday tune">🎵</button>
 <canvas id="cf"></canvas>
-<nav><b id="brand">K · 21</b><div><a href="#letter">Letter</a><a href="#wish">Wish</a><a href="#reasons">21 Reasons</a><a href="#gallery">Memories</a><a href="#guestbook">Wishes</a></div></nav>
+<nav><b id="brand">K · 21</b><div><a href="#letter">Letter</a><a href="#wish">Wish</a><a href="#reasons">Reasons</a><a href="#gallery">Memories</a><a href="#play">Play</a><a href="#guestbook">Wishes</a></div></nav>
 
 <section class="hero" id="top">
 <div>
 <div class="eyebrow">Celebrating a milestone</div>
 <h1>Happy 21st,<br><em id="nm">Ivan</em></h1>
 <p>Twenty-one years of you, and the world is better for every one of them. This little corner of the internet is all yours today.</p>
+<div id="cd" hidden></div>
 <a class="btn" href="#wish">Make a wish</a><a class="btn ghost" href="#gallery">See memories</a>
 </div>
 <div class="portrait"><img id="heroImg" alt="Birthday celebrant smiling in a photo together"></div>
 </section>
+
+<section class="stats rv"><div><b data-n="21">0</b>Years</div><div><b data-n="12">0</b>Memories</div><div><b data-n="21">0</b>Reasons</div></section>
 
 <section id="letter" class="rv"><div class="letter">
 <img id="letterImg" alt="A night out together">
@@ -99,6 +145,14 @@ footer b{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem
 <p>Here’s to 21, and to every beautiful year after it.</p>
 <div class="sign" id="from">— CJ</div>
 </div></div></section>
+
+<section id="khizha" class="rv"><div class="kz">
+<div class="eyebrow">A message from Khizha</div>
+<h2>Happy birthday, Ivan</h2>
+<p>Happy 21st birthday, Ivan! I’m so proud of the person you’re becoming. Thank you for being someone I can lean on, laugh with, and be myself around.</p>
+<p>I hope this year gives you everything you’ve worked so hard for. You deserve the best of everything, today and always. Enjoy your day, you’ve earned it.</p>
+<div class="sign">— Khizha</div>
+</div></section>
 
 <section id="wish" class="rv"><div class="cake-wrap" id="cakeBox">
 <div class="eyebrow">Make a wish</div>
@@ -125,6 +179,14 @@ footer b{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem
 <div class="eyebrow">Our moments</div><h2>Memories</h2>
 <div class="gallery" id="gal"></div></section>
 
+<section id="play" class="rv">
+<div class="eyebrow">Play</div><h2>Match the memories</h2>
+<div class="game" id="gm"></div>
+<div class="gbar"><span>Moves: <b id="mv">0</b></span><button class="btn ghost" id="rs2" style="margin:0">Shuffle</button><span id="gwin"></span></div></section>
+
+<section class="gift rv"><div class="eyebrow">One more thing</div><h2>A little surprise</h2>
+<button id="gbox" aria-label="Open the gift">🎁</button><div id="gmsg"></div></section>
+
 <section id="guestbook" class="rv">
 <div class="eyebrow">Guestbook</div><h2>Birthday wishes</h2>
 <div class="gb">
@@ -134,10 +196,10 @@ footer b{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem
 
 <footer><b>Happy Birthday!</b>Made with love, for a very special 21st. 🎉</footer>
 
-<div id="lb"><button id="lbx" aria-label="Close">×</button><button id="lbp" aria-label="Previous">‹</button><img id="lbi" alt=""><button id="lbn" aria-label="Next">›</button><div id="lbc"></div></div>
+<div id="lb"><button id="lbx" aria-label="Close">×</button><button id="lbs" aria-label="Slideshow">▶</button><button id="lbp" aria-label="Previous">‹</button><img id="lbi" alt=""><button id="lbn" aria-label="Next">›</button><div id="lbc"></div></div>
 
 <script>
-const CONFIG={name:"Ivan",from:"CJ"};
+const CONFIG={name:"Ivan",from:"CJ",birthday:"",gift:"Surprise, Ivan! Your real gift is waiting for you in person. Happy 21st! 🎁"}; // birthday format: "YYYY-MM-DD" (shows a live countdown)
 const PHOTOS=["photo4.jpg","photo1.jpg","photo2.jpg","photo3.jpg","photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg","photo9.jpg","photo10.jpg","photo11.jpg","photo12.jpg"];
 const REASONS=["Your smile lights up any room.","You’re kind without needing an audience.","Your laugh is contagious.","You make simple days feel special.","You listen, and you actually hear.","You’re stronger than you give yourself credit for.","You bring warmth wherever you go.","You care about the little things.","You’re always up for an adventure.","You make hard days easier.","You’re honest, even when it’s tough.","Your pouty selfies are undefeated.","You’re patient with the people you love.","You make great memories out of anything.","You work hard and rarely brag.","You’re thoughtful in quiet ways.","You’re fun to be around.","You believe in people.","You make home feel like a person.","You grow more amazing every year.","You’re simply, wonderfully you."];
 document.getElementById('nm').textContent=CONFIG.name;
@@ -154,7 +216,8 @@ PHOTOS.forEach((s,i)=>{const im=new Image();im.src=s;im.alt="Memory "+(i+1);im.l
 let cur=0;const lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc');
 function show(){lbi.src=PHOTOS[cur];lbc.textContent=(cur+1)+" / "+PHOTOS.length}
 function openLb(i){cur=i;show();lb.classList.add('on')}
-function closeLb(){lb.classList.remove('on')}
+let tm=null;function stopShow(){clearInterval(tm);tm=null;document.getElementById('lbs').textContent='▶'}
+function closeLb(){lb.classList.remove('on');stopShow()}
 function step(d){cur=(cur+d+PHOTOS.length)%PHOTOS.length;show()}
 lbx.onclick=closeLb;lbp.onclick=()=>step(-1);lbn.onclick=()=>step(1);
 lb.onclick=e=>{if(e.target===lb)closeLb()};
@@ -170,7 +233,7 @@ function tick(){cx.clearRect(0,0,cv.width,cv.height);ps=ps.filter(p=>p.l>0);ps.f
 // Cake
 const box=document.getElementById('cakeBox'),btn=document.getElementById('blow'),wm=document.getElementById('wishMsg');let out=false;
 btn.onclick=()=>{out=!out;box.classList.toggle('out',out);if(out){wm.textContent="Happy birthday! May every wish come true ✨";btn.textContent="Relight candles";burst()}else{wm.textContent="";btn.textContent="Blow the candles 🎂"}};
-if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setTimeout(burst,900);
+
 
 // Guestbook (per-device)
 const KEY="bday21-wishes";let notes=[];
@@ -180,6 +243,50 @@ function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 function render(){nb.innerHTML=notes.length?notes.slice().reverse().map(n=>'<div class="note"><b>'+esc(n.n)+'</b><p>'+esc(n.m)+'</p></div>').join(''):'<p class="empty">Be the first to leave a birthday wish.</p>'}
 render();
 document.getElementById('f').onsubmit=e=>{e.preventDefault();const n=who.value.trim(),m=msg.value.trim();if(!n||!m)return;notes.push({n,m});try{localStorage.setItem(KEY,JSON.stringify(notes))}catch(x){}render();e.target.reset();burst()};
+
+
+// Intro
+document.getElementById('introName').textContent="Happy Birthday, "+CONFIG.name+"!";
+document.getElementById('open').onclick=()=>{document.getElementById('intro').classList.add('off');document.body.classList.remove('lock');burst();playTune()};
+
+// Balloons
+const blEl=document.getElementById('bl');
+for(let i=0;i<12;i++){const b=document.createElement('i');b.className='bl';const c='hsl('+(i*37%360)+',70%,62%)';b.style.cssText='left:'+(Math.random()*96)+'%;background:'+c+';color:'+c+';transform:scale('+(.7+Math.random()*.8)+');animation-duration:'+(14+Math.random()*14)+'s;animation-delay:-'+(Math.random()*20)+'s';blEl.appendChild(b)}
+
+// Birthday tune (Web Audio)
+const TUNE=[[261.63,.75],[261.63,.25],[293.66,1],[261.63,1],[349.23,1],[329.63,2],[261.63,.75],[261.63,.25],[293.66,1],[261.63,1],[392,1],[349.23,2],[261.63,.75],[261.63,.25],[523.25,1],[440,1],[349.23,1],[329.63,1],[293.66,2],[466.16,.75],[466.16,.25],[440,1],[349.23,1],[392,1],[349.23,2]];
+let ac=null,oscs=[],tuneTimer=null;const musBtn=document.getElementById('mus');
+function stopTune(){oscs.forEach(o=>{try{o.stop()}catch(e){}});oscs=[];clearTimeout(tuneTimer);musBtn.classList.remove('on')}
+function playTune(){try{stopTune();ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();let t=ac.currentTime+.05;TUNE.forEach(([f,b])=>{const o=ac.createOscillator(),g=ac.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+b*.5);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+b*.5+.05);oscs.push(o);t+=b*.5});musBtn.classList.add('on');tuneTimer=setTimeout(stopTune,(t-ac.currentTime)*1000)}catch(e){}}
+musBtn.onclick=()=>musBtn.classList.contains('on')?stopTune():playTune();
+
+// Slideshow
+document.getElementById('lbs').onclick=()=>{if(tm){stopShow()}else{tm=setInterval(()=>step(1),2800);document.getElementById('lbs').textContent='❚❚'}};
+
+// Countdown
+if(CONFIG.birthday){const cd=document.getElementById('cd');cd.hidden=false;const [,m,d]=CONFIG.birthday.split('-').map(Number);
+const tick2=()=>{const n=new Date();if(n.getMonth()===m-1&&n.getDate()===d){cd.innerHTML='<em>🎉 It’s today! Happy birthday! 🎉</em>';return}let g=new Date(n.getFullYear(),m-1,d);if(g<n)g=new Date(n.getFullYear()+1,m-1,d);let s=Math.floor((g-n)/1000);const D=Math.floor(s/86400),H=Math.floor(s%86400/3600),M=Math.floor(s%3600/60),S=s%60;cd.innerHTML=[[D,'Days'],[H,'Hrs'],[M,'Min'],[S,'Sec']].map(x=>'<span><b>'+x[0]+'</b>'+x[1]+'</span>').join('')};tick2();setInterval(tick2,1000)}
+
+// Count-up stats
+const io2=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;io2.unobserve(x.target);x.target.querySelectorAll('b').forEach(b=>{const N=+b.dataset.n;let i=0;const iv=setInterval(()=>{b.textContent=++i;if(i>=N)clearInterval(iv)},Math.max(40,900/N))})}),{threshold:.4});
+document.querySelectorAll('.stats').forEach(el=>io2.observe(el));
+
+// Portrait tilt
+const pt=document.querySelector('.portrait');
+pt.addEventListener('mousemove',e=>{const r=pt.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;pt.firstElementChild.style.transform='perspective(800px) rotateY('+x*10+'deg) rotateX('+-y*10+'deg)'});
+pt.addEventListener('mouseleave',()=>pt.firstElementChild.style.transform='');
+
+// Memory game
+const gmEl=document.getElementById('gm'),mvEl=document.getElementById('mv'),gw=document.getElementById('gwin');let fc=null,lk=false,mvs=0,fd=0;
+function setup(){const ids=[0,1,2,3,4,5],deck=[...ids,...ids].sort(()=>Math.random()-.5);gmEl.innerHTML='';mvs=0;fd=0;fc=null;lk=false;mvEl.textContent=0;gw.textContent='';
+deck.forEach(id=>{const c=document.createElement('button');c.className='card';c.dataset.id=id;c.setAttribute('aria-label','Memory card');c.innerHTML='<span class="f b">?</span><span class="f fr"><img alt="" src="'+PHOTOS[id]+'"></span>';c.onclick=()=>flip(c);gmEl.appendChild(c)})}
+function flip(c){if(lk||c.classList.contains('on'))return;c.classList.add('on');if(!fc){fc=c;return}mvs++;mvEl.textContent=mvs;
+if(fc.dataset.id===c.dataset.id){fd++;fc=null;if(fd===6){gw.textContent='All matched in '+mvs+' moves! 🎉';burst()}}
+else{lk=true;const a=fc;fc=null;setTimeout(()=>{a.classList.remove('on');c.classList.remove('on');lk=false},800)}}
+document.getElementById('rs2').onclick=setup;setup();
+
+// Gift
+document.getElementById('gbox').onclick=()=>{const g=document.getElementById('gmsg');g.textContent=CONFIG.gift;g.classList.add('on');document.getElementById('gbox').textContent='🎉';burst()};
 
 // Reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
